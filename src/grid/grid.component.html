@@ -1,0 +1,40 @@
+<div class="grid-container">
+  @for (vitem of verticalBorders; track $index) {
+    @for (hitem of horizontalBorders; track $index) {
+      <div class="square-gap"></div>
+      @if ((hitem + 1) % (fieldSize + 1) > 0) {
+        <div [class]="classHorizontalLattice"
+             [ngClass]="{ 'right': isRightCoordinate('horizontal', [hitem, vitem]) }"
+             [attr.data-x]="hitem"
+             [attr.data-y]="vitem" (click)="changeBorders($event, [hitem, vitem])"></div>
+      }
+
+    }
+    @if (vitem < fieldSize) {
+      @for (hitem of horizontalBorders; track $index) {
+        <div [class]="classVerticalLattice" [attr.data-x]="hitem" [attr.data-y]="vitem"
+             [ngClass]="{ 'right': isRightCoordinate('vertical', [hitem, vitem])}"
+             (click)="changeBorders($event, [hitem, vitem])"></div>
+        @if ((hitem + 1) % (fieldSize + 1) > 0) {
+          <div
+            [ngClass]="{'field': true, 'field__lion': hasLionClass(hitem,vitem), 'field__crown': hasCrownClass(hitem,vitem), 'field__picture': hasCrownClass(hitem,vitem) || hasLionClass(hitem,vitem) }">
+          </div>
+        }
+      }
+    }
+  }
+</div>
+
+<div class="button-container">
+  <button class="game-button" (click)="check()">Проверить</button>
+  <button class="game-button" (click)="clearField()">Заново</button>
+  <button class="game-button" (click)="showAnswer()">Показать ответ</button>
+</div>
+
+@if (resultText()) {
+  <label class="label-text">{{ resultText() }}</label>
+}
+
+
+
+

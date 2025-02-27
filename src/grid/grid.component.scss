@@ -1,0 +1,88 @@
+$container: #e7ab4f;
+$lattice-color : darken($container, 5);
+$lattice-width : 7px;
+$field-size: 70px;
+$right-color: blue;
+
+.grid-container {
+  display: flex;
+  width: $field-size * 6 + $lattice-width * 7;
+  flex-wrap: wrap;
+  background-color: #e7ab4f;
+    .vertical-lattice {
+      width: $lattice-width;
+      height: $field-size;
+      background-color: $lattice-color;
+      &.active {
+        background-color: darkred;
+        &.right {
+          background-color: $right-color;
+        }
+      }
+      &.right {
+        background-color: $right-color;
+      }
+    }
+
+    .horizontal-lattice {
+      width: $field-size;
+      height: $lattice-width;
+      background-color:  $lattice-color;
+      &.active {
+        background-color: darkred;
+        &.right {
+          background-color: $right-color;
+        }
+      }
+      &.right {
+        background-color: $right-color;
+      }
+    }
+    .square-gap {
+      width: $lattice-width;
+      height: $lattice-width;
+      background-color: inherit;
+    }
+
+
+    .field {
+      width: $field-size;
+      height: $field-size;
+      background-color: inherit;
+      &__picture {
+      background-color: inherit;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+
+      }
+      &__lion {
+        background-image: url("assets/crowns-lions/lion.svg");
+      }
+      &__crown {
+        background-image: url("assets/crowns-lions/crown.svg");
+      }
+
+    }
+
+
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+  .game-button {
+    padding: 10px 15px;
+    background-color: $container;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+}
+
+.label-text {
+  font-size: 20px;
+  padding: 20px;
+  font-weight: bold;
+}
